@@ -8,7 +8,11 @@
         'ngSanitize', 
         'ui.router', 
         'ui.bootstrap', 
-        'toastr'
+        'toastr',
+        'core',
+        'people',
+        'skill',
+        'profile'
     ]);
 
 })();
