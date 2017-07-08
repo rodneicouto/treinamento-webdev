@@ -11,9 +11,9 @@
       .state('home', {
         url: '/',
         template: '<tt-hello></tt-hello>'
-      });
+    });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/people');
   }
 
 })();

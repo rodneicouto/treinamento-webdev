@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('core')
         .factory('Skill', factory)
 
 	/** @ngInject */
