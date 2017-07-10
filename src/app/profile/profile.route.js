@@ -8,8 +8,8 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('people', {
-        url: '/people',
+      .state('profile', {
+        url: '/profile',
         template: '<tt-profile-edit  user="$ctrl.user"></tt-profile-edit>',        
         controller: ['resolveUser', function (resolveUser) {
           this.user = resolveUser;
@@ -21,8 +21,6 @@
           }]
         }
       });
-
-    $urlRouterProvider.otherwise('/');
   }
 
 })();

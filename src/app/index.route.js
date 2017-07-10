@@ -7,13 +7,12 @@
 
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
+
     $stateProvider
       .state('home', {
         url: '/',
         template: '<tt-hello></tt-hello>'
     });
-
-    $urlRouterProvider.otherwise('/people');
   }
 
 })();

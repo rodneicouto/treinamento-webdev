@@ -10,7 +10,7 @@
         'ui.bootstrap', 
         'toastr',
         'core',
-        'people',
+        'search',
         'skill',
         'profile'
     ]);
