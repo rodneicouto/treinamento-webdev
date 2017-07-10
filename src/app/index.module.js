@@ -12,7 +12,8 @@
         'core',
         'search',
         'skill',
-        'profile'
+        'profile',
+        'shared'
     ]);
 
 })();
