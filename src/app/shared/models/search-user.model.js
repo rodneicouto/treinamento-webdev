@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('core')
+        .module('shared')
         .factory('SearchUser', factory)
 
 	/** @ngInject */
