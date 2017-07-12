@@ -46,7 +46,9 @@
 
         SkillUser.prototype.getName = function() { return this._skill.getName(); }
 
-        SkillUser.prototype.getDescription = function(){ return this._skill.getDescription; }
+        SkillUser.prototype.getDescription = function(){ return this._skill.getDescription(); }
+
+        SkillUser.prototype.getValidated = function(){ return this._skill.getValidated(); }
 
         SkillUser.prototype.getId = function() { 
             return this._skill.getId(); 

@@ -8,19 +8,22 @@
 	/** @ngInject */
     function factory() {
         //construtor
-        function SearchSkill(name, id, projectCount, experienceCount) {
-            if( !name || !id || !projectCount || !experienceCount ) 
+        function SearchSkill(name, id, projectCount, experienceCount, level) {
+            if( !name || !id || !projectCount || !experienceCount ||  !level ) 
                 throw "name, id, projectCount and experienceCount are required"; 
             
             this._name = name;
             this._id = id;
             this._experienceCount = experienceCount;
             this._projectCount = projectCount;
+            this._level = level;
         }
 
         SearchSkill.prototype.getName = function(){ return this._name; }
 
         SearchSkill.prototype.getId = function(){ return this._id; }
+
+        SearchSkill.prototype.getLevel = function(){ return this._level; }
 
         SearchSkill.prototype.getProjectCount = function() { return this._projectCount; }
 

@@ -45,6 +45,9 @@
         /**
          * Retorna as competencias desse usuário. O retorno sera um array com objetos
          * do tipo SkillUser
+         * ATENCAO: O numero de experiencias e projetos não está atualizado nos objetos
+         * retornados aqui. Para isso, use User.getSkill
+         * 
          * @return {Array<SkillUser>} array com as experiencias do usuario
          */
         Experience.prototype.getSkills = function(){ return this._skills; }
@@ -56,7 +59,7 @@
          * @param [SkillUser] skill competencia com seu nivel
          */
         Experience.prototype.addSkill = function(SkillUser){ 
-            this.removeSkillUser(SkillUser)
+            this.removeSkill(SkillUser)
             return this._skills.push(SkillUser); 
         }
 
@@ -69,7 +72,7 @@
          * 
          * @param [SkillUser | Skill] skill competencia com seu nivel
          */
-        Experience.prototype.removeSkillUser = function(skill){
+        Experience.prototype.removeSkill = function(skill){
             ModelHelper.removeItemById(skill, this._skills);
         }
 

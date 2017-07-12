@@ -65,7 +65,7 @@
                                 var obj = data[key];
                                 var email = firebaseService.decodeFromPath(key);                                
                                 if( !hashUser[email] ) hashUser[email] = new SearchUser(obj.name, email);
-                                hashUser[email].addSearchSkills(new SearchSkill(idNameHash[data.key], data.key, obj.experienceCount, obj.projectCount));                                
+                                hashUser[email].addSearchSkills(new SearchSkill(idNameHash[data.key], data.key, obj.experienceCount, obj.projectCount, obj.level));                                
                             }
                         }                     
                     }

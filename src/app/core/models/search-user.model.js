@@ -19,7 +19,7 @@
 
         SearchUser.prototype.getEmail = function(){ return this._email; }
 
-        SearchUser.prototype.searchSkills = function(){ return this._searchSkills; }
+        SearchUser.prototype.getSearchSkills = function(){ return this._searchSkills; }
         SearchUser.prototype.addSearchSkills = function(searchSkill){ 
             this._searchSkills.push(searchSkill) 
         }
