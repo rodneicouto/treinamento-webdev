@@ -11,7 +11,7 @@
         function Skill(name) {
             if( !name ) throw "name is required"; 
             this.setName(name);
-            this._id = name.split(" ").join("");
+            this._id = name.split(" ").join("").split(".").join(",");
             this.setValidated(false);
         }
          /**

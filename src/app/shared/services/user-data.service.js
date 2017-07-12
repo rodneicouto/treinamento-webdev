@@ -99,7 +99,9 @@
                                 else{
                                     $q.all(promissesSkill).then(function (values) {
                                         for (var i = 0; i < values.length; i++) {
+                                            if( !values[i]) continue;
                                             var data = values[i].val();
+                                            if( !data) continue;
                                             data.id = values[i].key;
                                             
                                             for (var k = 0; k < hashSkill[data.id].length; k++) {
@@ -253,9 +255,7 @@
                         }
                     }
                     toSend.experiences[item.getId()] = _exp;
-                }
-                
-                
+                }                                
             }
             return toSend;
         }

@@ -15,7 +15,7 @@
             if( !name ) throw "name is required"
             
             //o id padrão será o nome sem espaço. 
-            this._id = name.split(" ").join("");
+            this._id = name.split(" ").join("").split(".").join(",");;
             this._name = name;
             this._skills = [];
         }

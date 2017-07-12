@@ -102,14 +102,7 @@
             if(data.description) experience.setDescription(data.description);            
             if(data.startDate) experience.setStartDate(data.startDate);            
             if(data.endDate) experience.setEndDate(data.endDate);            
-            if(data.title) experience.setTitle(data.title); 
-            if( data.skills ){
-                for (var property in data.skills) {
-                    if (data.skills.hasOwnProperty(property)) {
-                        experience.addSkill(new SkillUser(new Skill(property), data.skills[property]))
-                    }
-                }   
-            }            
+            if(data.title) experience.setTitle(data.title);         
             return experience;        
         };
 
