@@ -18,9 +18,9 @@
        /**
         * Lista de usuários que possuem determinada habilidade
         *
-        * @param {Array<string>} key chaves para busca de competencias. Cada entrada vai ser buscada com ou e 
-        *    condensada num único retorno
-        * @return {Array<User>} usuário que possui a
+        * @param {Array<string>} key chaves para busca de competencias. a busca vai procurar pelos usuarios que 
+        * possuem uma palava OU outra.
+        * @return {Array<User>}
         */
        function users(keys){
         
@@ -81,6 +81,11 @@
             });
        }
 
+    /**
+     * Retorna todas as competencias que possuem no nome determinado valor
+     * @param {string} name pedaço do nome desejado
+     * @return {Array<Skill>} array de competencias, ou vazio caso o nome seja inválido
+     */
        function search(name){
             if( !name ){
                 var deferred = $q.defer();

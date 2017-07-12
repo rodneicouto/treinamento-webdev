@@ -149,7 +149,12 @@
 
             return deferred.promise;
         }
-
+        
+        /**
+         * Usuário a ser criado
+         *
+         * @param {User} user Usuário para ser criado no firebase
+         */
         function create(user) {
             $log.info("creating user");
             _save(user);
@@ -169,11 +174,7 @@
         * Métodos privados
         *****************************************************************/
 
-         /**
-         * Usuário a ser criado
-         *
-         * @param {User} user Usuário para ser criado no firebase
-         */
+        
         function _save(user) {
             //https://firebase.googleblog.com/2015/09/introducing-multi-location-updates-and_86.html       
             $log.debug("create user");

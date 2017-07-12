@@ -16,6 +16,7 @@
         * Lista de usuários que possuem determinada habilidade
         *
         * @param {string} name substring do projeto
+        * @return {Array<Project>} array de projetos, ou vazio caso o nome seja inválido
         */
        function search(name){
             if( !name ){
