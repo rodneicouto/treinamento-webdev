@@ -7,8 +7,8 @@
 # Passos após baixar o projeto pela primeira vez
 
 * Executar dentro do diretório raiz do projeto	
-    1 ``` npm install ```
-    1 ``` bower install ```
+    * ``` npm install ```
+    * ``` bower install ```
 * Para rodar, basta executar na linha de comando, dentro do diretorio do projeto
     * ``` gulp serve ```
 * Caso tenha feito testes jasmine, para rodar
