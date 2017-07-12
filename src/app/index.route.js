@@ -9,9 +9,9 @@
   function routerConfig($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-      .state('home', {
-        url: '/',
-        template: '<tt-hello></tt-hello>'
+      .state('test-page', {
+        url: '/test-page',
+        template: '<tt-test-page></tt-test-page>'
     });
   }
 

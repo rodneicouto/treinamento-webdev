@@ -7,28 +7,44 @@
 
 	/** @ngInject */
     function factory() {
-        
-        Skill.prototype.name = name;
-
         //construtor
-        function Skill() {
+        function Skill(name) {
+            if( !name ) throw "name is required"; 
+            this.setName(name);
+            this._id = name.split(" ").join("");
+            this.setValidated(false);
         }
+         /**
+         * Retorna o identificador dessa competência. 
+         * @return identificador da competência. 
+         */
+        Skill.prototype.getId = function(){
+            return this._id;
+        }   
 
-        Skill.prototype.getName = function(){
-            return this._name;
-        }
-        Skill.prototype.setName = function(name){
-            return this._name = name;
-        }
 
-        
-        //metodos estaticos
-        
-        Skill.build = function (data) {
-            var skill = new Skill();
-            skill.setName(data.name);          
+        Skill.prototype.getValidated = function(){ return this._validated; }
+        Skill.prototype.setValidated = function(validated){ return this._validated = validated; }
+
+        Skill.prototype.getName = function(){ return this._name; }
+        Skill.prototype.setName = function(name){ return this._name = name; }
+
+        Skill.prototype.getDescription = function(){ return this._description; }
+        Skill.prototype.setDescription = function(description){ return this._description = description; }
+
+        /**
+         * Constrói um objeto skill com o dado vindo do servidor. 
+         * ATENCAO: Este é um método estático
+         * 
+         * @param {Object} data dado vindo do servidor sem manipulação nenhuma
+         */
+        Skill.buildFromServer = function (data) {
+            var skill = new Skill(data.name);
+            if( data.id ) skill._id = data.id;
+            if( data.validated ) skill.setValidated(data.validated);
+            if( data.description ) skill.setDescription(data.description);        
+            return skill;
         };
-
 
         return Skill;
          

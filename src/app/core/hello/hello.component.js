@@ -3,7 +3,7 @@
 
 	angular
 		.module('core')
-		.component('ttHello', {
+		.component('ttTestPage', {
 			templateUrl: 'app/core/hello/hello.component.html',
 			controller: controller,
 			controllerAs: '$ctrl'
@@ -13,12 +13,16 @@
 	function controller(userDataService, User) {	
 		var $ctrl = this;
 		$ctrl.$onInit = function() {
-			var u = new User();
+			//userDataService.create(u);
+			userDataService.get("rodnei@tecgraf.puc-rio.br").then(function(value){
+				console.log("usuario", value);
+				console.log("skill", value.getSkills());
+				userDataService.create(value);
+			}).catch(function(e){
+				console.log("usuario-erro", e);
+			});
+			
 
-			u.setName("Rodnei Silva Couto");
-			u.setEmail("rodnei@tecgraf.puc-rio.br");
-
-			userDataService.create(u);
 		}
 	}
 
