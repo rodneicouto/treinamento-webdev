@@ -11,8 +11,7 @@
         return {
             get: get,
             create: create,
-            update: update,
-            list: list
+            update: update
         }
 
         /**
@@ -164,13 +163,6 @@
         function update(user) {
             $log.info("updating user");
             _save(user);
-        }
-
-        /**
-         * @return {Array<User>} lista de usuários
-         */
-        function list() {
-            $log.info("list users");
         }
 
         /****************************************************************

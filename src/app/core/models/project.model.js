@@ -41,13 +41,6 @@
         Project.buildFromServer = function (data) {
             var project = new Project(data.name);
             project._id = data.id;     
-            if( data.skills ) {
-                for (var property in data.skills) {
-                    if (data.skills.hasOwnProperty(property)) {
-                        project.addSkill(new Skill(property))
-                    }
-                }   
-            }  
             return project;    
         };
 

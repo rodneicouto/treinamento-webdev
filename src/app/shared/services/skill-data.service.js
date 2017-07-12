@@ -12,7 +12,8 @@
             users: users,
             create:create,
             remove:remove,
-            join: join
+            join: join,
+            search: search
        }
        /**
         * Lista de usuários que possuem determinada habilidade
@@ -47,6 +48,7 @@
                             firebaseService.database().ref('/search-index/' + skillId )
                             .once('value').then(function(s){
                                 var r =  s.val();
+                                if( !r ) return null;
                                 r.key = s.key;
                                 return r;
                             })
@@ -57,7 +59,6 @@
                 return $q.all(promisses).then(function(values){
                     for (var i = 0; i < values.length; i++) {
                         var data = values[i];
-                        
                         for (var key in data) {
                             if (data.hasOwnProperty(key)) {
                                 if( key == "key") continue;
@@ -80,6 +81,26 @@
             });
        }
 
+       function search(name){
+            if( !name ){
+                var deferred = $q.defer();
+                deferred.resolve([]);
+                return deferred.promise;
+            }
+            return firebaseService.database().ref('/skills').once('value').then(function(snapshot){
+                var ret = [];
+                var data = snapshot.val();
+                if( !data ) return [];
+                for (var skillId in data) {
+                    if(  data[skillId].name.toLowerCase().indexOf(name.toLowerCase()) >=0 && data.hasOwnProperty(skillId)){
+                        data[skillId].id = skillId;
+                        ret.push(Skill.buildFromServer(data[skillId]));
+                    }                    
+                }
+                return ret;
+            });
+       }
+
        /**
         * Cria uma habilidade nova
         *
@@ -87,6 +108,14 @@
         */
        function create(skill){
             $log.info("create skill");
+            if( !skill ) throw "skill is required"
+            var updates = {};    
+            updates['skills/' + skill.getId()]  = {
+                name: skill.getName(),
+                validated : skill.getValidated(),
+                description: skill.getDescription()
+            }
+            firebaseService.database().ref().update(updates);
        }
 
        /**
