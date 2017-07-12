@@ -190,11 +190,11 @@
             updates['users/' + userId] = toSend.user;
             for (var i = 0; i < toSend.skillsToRemove.length; i++) {
                 var toRemove = toSend.skillsToRemove[i];
-                updates['user-skill/' + toRemove + "/" + userId] = null;                
+                updates['search-index/' + toRemove + "/" + userId] = null;                
             }
             for (var skillId in toSend.skillsToAdd) {
                 if (toSend.skillsToAdd.hasOwnProperty(skillId)) {
-                    updates['user-skill/' + skillId + "/" + userId] = toSend.skillsToAdd[skillId];                    
+                    updates['search-index/' + skillId + "/" + userId] = toSend.skillsToAdd[skillId];                    
                 }
             }
             updates['experiences/' + userId]  = toSend.experiences;
@@ -220,7 +220,12 @@
                 for (var i = 0; i < skills.length; i++) {
                     var skill = skills[i];
                     toSend.user.skills[skill.getId()] = skill.getLevel();                    
-                    toSend.skillsToAdd[skill.getId()] = skill.getLevel();
+                    toSend.skillsToAdd[skill.getId()] = {
+                        level: skill.getLevel(),
+                        experienceCount: skill.getExperienceCount(),
+                        projectCount: skill.getProjectCount(),
+                        name: user.getName()
+                    }
                 }
             }
             if( user.$databaseSkills ) {
