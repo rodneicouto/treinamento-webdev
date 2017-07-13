@@ -12,7 +12,7 @@
 
         //construtor
         function Project(name) {
-            if( !name ) throw "name is required"
+            if( !name ) throw "Project constructor: name is required"
             
             //o id padrão será o nome sem espaço. 
             this._id = name.split(" ").join("").split(".").join(",");;
@@ -33,6 +33,7 @@
          * @param {Skill} skill objeto competência
          */
         Project.prototype.addSkill = function(skill){
+            if (!(skill instanceof Skill)) throw "Project.addSkill: Illegal Argument exception"
             this._skills.push(skill);
         }
         
@@ -41,7 +42,7 @@
         Project.buildFromServer = function (data) {
             var project = new Project(data.name);
             project._id = data.id;     
-            return project;    
+            return project;
         };
 
 

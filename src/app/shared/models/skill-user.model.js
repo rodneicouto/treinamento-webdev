@@ -6,7 +6,7 @@
         .factory('SkillUser', factory)
 
 	/** @ngInject */
-    function factory() {
+    function factory(Skill) {
 
         /**
          * 
@@ -14,7 +14,8 @@
          * @param {int} level nivel da habilidade: 0 para baixa, 1 para média e 2 para avançado
          */
         function SkillUser(skill, level) {
-            if( !skill || !level == null ) throw "skill and level are required"; 
+            if( !skill || !level == null ) throw "SkillUser contructor: skill and level are required"; 
+            if (!(skill instanceof Skill)) throw "SkillUser contructor: Illegal Argument exception"
             this._skill = skill;
             this.setLevel(level);
             this._projectCount = 0;
@@ -25,7 +26,7 @@
          * @param {int} level nivel da habilidade: 0 para baixa, 1 para média e 2 para avançado
          */
         SkillUser.prototype.setLevel= function(level) { 
-            if( level != 1 && level != 2 && level != 3 ) { throw "Ilegal SkillUser.level argument"; }
+            if( level != 1 && level != 2 && level != 3 ) { throw "SkillUser.setLevel: Ilegal SkillUser.level argument"; }
             this._level = level; 
         }
         SkillUser.prototype.getLevel = function() { return this._level; }

@@ -10,7 +10,7 @@
         
         //construtor
         function User(email) {
-            if( !email ) { throw "email is required"; }
+            if( !email ) { throw "User contructor: email is required"; }
             this._email = email;
             this._skills = [];
             this._experiences = [];
@@ -25,13 +25,13 @@
 
         User.prototype.getEmail = function(){ return this._email; }
         User.prototype.setEmail = function(email){ 
-            if( !email) throw 'illegal argument exception';
+            if( !email) throw 'User.setEmail: illegal argument exception';
             return this._email = email; 
         }
 
         User.prototype.getName = function(){ return this._name; }
         User.prototype.setName = function(name){ 
-            if( !name) throw 'illegal argument exception';
+            if( !name) throw 'User.setName: illegal argument exception';
             return this._name = name; 
         }
 
@@ -123,6 +123,7 @@
          * @param {SkillUser} skill competencia com seu nivel
          */
         User.prototype.addSkill = function(skill){ 
+            if (!(skill instanceof SkillUser)) throw "User.addSkill: Illegal Argument exception"
             this.removeSkill(skill)
             return this._skills.push(skill); 
         }
@@ -136,6 +137,7 @@
          * @param {SkillUser | Skill} skill competencia com seu nivel
          */
         User.prototype.removeSkill = function(skill){
+            if (!(skill instanceof SkillUser) || !(skill instanceof SkillUser)) throw "User.removeSkill: Illegal Argument exception"
             ModelHelper.removeItemById(skill, this._skills); 
             for( var i = 0; i < this._experiences.length; i++ ) {
                 var exp = this._experiences[i];
@@ -161,6 +163,7 @@
          * @param {Experience} experience experiencia com seu nivel
          */
         User.prototype.addExperience = function(experience){ 
+            if (!(experience instanceof Experience) ) throw "User.addExperience: Illegal Argument exception"
             if( experience ) {
                 this.removeExperience(experience)
                 this._experiences.push(experience)
@@ -173,6 +176,7 @@
          * @param {Experience} experience experiencia a ser removida
          */
         User.prototype.removeExperience = function(experience){
+            if (!(experience instanceof Experience) ) throw "User.removeExperience: Illegal Argument exception"
             if( experience ) ModelHelper.removeItemById(experience, this._experiences);  
         }
 

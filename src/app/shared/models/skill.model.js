@@ -9,7 +9,7 @@
     function factory() {
         //construtor
         function Skill(name) {
-            if( !name ) throw "name is required"; 
+            if( !name ) throw "Skill contructor: name is required"; 
             this.setName(name);
             this._id = name.split(" ").join("").split(".").join(",");
             this.setValidated(false);
@@ -28,7 +28,7 @@
 
         Skill.prototype.getName = function(){ return this._name; }
         Skill.prototype.setName = function(name){ 
-            if( !name) throw 'illegal argument exception';
+            if( !name) throw 'Skill.setName: illegal argument exception';
             return this._name = name; 
         }
 

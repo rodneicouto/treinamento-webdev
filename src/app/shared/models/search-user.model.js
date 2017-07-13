@@ -6,7 +6,7 @@
         .factory('SearchUser', factory)
 
 	/** @ngInject */
-    function factory() {
+    function factory(SearchSkill) {
         //construtor
         function SearchUser(name, email) {
             if( !name || !email ) throw "name and email are required"; 
@@ -21,6 +21,7 @@
 
         SearchUser.prototype.getSearchSkills = function(){ return this._searchSkills; }
         SearchUser.prototype.addSearchSkills = function(searchSkill){ 
+            if (!(searchSkill instanceof SearchSkill)) throw "SearchUser.addSearchSkills: Illegal Argument exception"
             this._searchSkills.push(searchSkill) 
         }
         
