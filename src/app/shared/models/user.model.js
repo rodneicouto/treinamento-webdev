@@ -24,10 +24,16 @@
         }
 
         User.prototype.getEmail = function(){ return this._email; }
-        User.prototype.setEmail = function(email){ return this._email = email; }
+        User.prototype.setEmail = function(email){ 
+            if( !email) throw 'illegal argument exception';
+            return this._email = email; 
+        }
 
         User.prototype.getName = function(){ return this._name; }
-        User.prototype.setName = function(name){ return this._name = name; }
+        User.prototype.setName = function(name){ 
+            if( !name) throw 'illegal argument exception';
+            return this._name = name; 
+        }
 
         User.prototype.getLattes = function(){ return this._lattes; }
         User.prototype.setLattes = function(value){ return this._lattes = value; }

@@ -28,7 +28,10 @@
         Experience.prototype.setDescription = function(description){ return this._description = description; }
 
         Experience.prototype.getTitle = function(){ return this._title; }
-        Experience.prototype.setTitle = function(title){ return this._title = title; }
+        Experience.prototype.setTitle = function(title){ 
+            if( !title) throw 'illegal argument exception';
+            return this._title = title; 
+        }
 
         Experience.prototype.getStartDate = function(){ return this._startDate; }
         Experience.prototype.setStartDate = function(startDate){ 

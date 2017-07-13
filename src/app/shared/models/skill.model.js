@@ -27,7 +27,10 @@
         Skill.prototype.setValidated = function(validated){ return this._validated = validated; }
 
         Skill.prototype.getName = function(){ return this._name; }
-        Skill.prototype.setName = function(name){ return this._name = name; }
+        Skill.prototype.setName = function(name){ 
+            if( !name) throw 'illegal argument exception';
+            return this._name = name; 
+        }
 
         Skill.prototype.getDescription = function(){ return this._description; }
         Skill.prototype.setDescription = function(description){ return this._description = description; }
