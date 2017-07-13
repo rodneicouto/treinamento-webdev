@@ -1,7 +1,7 @@
 # Passos de instalacao: 
 
 * Instalar o node (https://nodejs.org)
-* Instalar os plugins do Node necessários. O comando abaixo deve ser executado dentro do diretorio raiz do projeto
+* Instalar os plugins do Node necessários.
     * `sudo npm install -g gulp bower`
 
 # Passos após baixar o projeto pela primeira vez
