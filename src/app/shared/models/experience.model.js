@@ -9,7 +9,8 @@
     function factory(SkillUser, Skill, ModelHelper, Project) {
         
         //construtor
-        function Experience() {
+        function Experience(title) {
+            if( !title) throw 'Experience constructor: title is required';
             this._skills = [];
             this._id = ModelHelper.guid();
         }
@@ -108,12 +109,11 @@
          * @param {Object} data dado vindo do servidor sem manipulação nenhuma
          */
         Experience.buildFromServer = function (data) {
-            var experience = new Experience();    
+            var experience = new Experience(data.title);    
             experience._id = data.id;        
             if(data.description) experience.setDescription(data.description);            
             if(data.startDate) experience.setStartDate(data.startDate);            
-            if(data.endDate) experience.setEndDate(data.endDate);            
-            if(data.title) experience.setTitle(data.title);         
+            if(data.endDate) experience.setEndDate(data.endDate);     
             return experience;        
         };
 

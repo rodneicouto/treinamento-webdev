@@ -13,7 +13,7 @@
             list: list
        }
        /**
-        * Lista de usuários que possuem determinada habilidade
+        * Lista de projetos que possuem no nome determinado valor
         *
         * @param {string} name substring do projeto
         * @return {Array<Project>} array de projetos, ou vazio caso o nome seja inválido

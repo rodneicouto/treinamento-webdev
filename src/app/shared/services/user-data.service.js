@@ -157,7 +157,7 @@
          */
         function create(user) {
             $log.info("creating user");
-            _save(user);
+            return _save(user);
         }
 
         /**
@@ -167,7 +167,7 @@
          */
         function update(user) {
             $log.info("updating user");
-            _save(user);
+            return _save(user);
         }
 
         /****************************************************************
@@ -193,7 +193,7 @@
                 }
             }
             updates['experiences/' + userId]  = toSend.experiences;
-            firebaseService.database().ref().update(updates);
+            return firebaseService.database().ref().update(updates);
         }
 
 

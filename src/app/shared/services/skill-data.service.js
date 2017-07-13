@@ -82,7 +82,8 @@
        }
 
     /**
-     * Retorna todas as competencias que possuem no nome determinado valor
+     * Retorna lista de competencias que possuem no nome determinado valor.
+     * 
      * @param {string} name pedaço do nome desejado
      * @return {Array<Skill>} array de competencias, ou vazio caso o nome seja inválido
      */
@@ -120,7 +121,7 @@
                 validated : skill.getValidated(),
                 description: skill.getDescription()
             }
-            firebaseService.database().ref().update(updates);
+            return firebaseService.database().ref().update(updates);
        }
 
        /**
