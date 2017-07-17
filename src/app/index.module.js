@@ -5,10 +5,12 @@
     .module('app', [ 
         'ngAnimate', 
         'ngCookies', 
-        'ngSanitize', 
+        'ngSanitize',
+        'ui.select', 
         'ui.router', 
         'ui.bootstrap', 
         'toastr',
+        'ui.grid',
         'core',
         'search',
         'skill',

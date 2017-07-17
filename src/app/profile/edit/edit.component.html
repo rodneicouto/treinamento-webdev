@@ -2,4 +2,40 @@ Pagina entrada perfil
 <br>
 <div  uib-tooltip="Rodnei Couto"  tooltip-placement="right-bottom" tt-avatar name={{$ctrl.user.getName()}}></div>  Nome: {{$ctrl.user.getName()}}
 
+<div id="nuvemPalavras" class="jqcloud"></div>
+
+<br>
+
 <div uib-alert class="alert-warning">Teste bootstrap!</div>
+<br>
+ <ui-select ng-model="$ctrl.selected.value">
+    <ui-select-match>
+        <span ng-bind="$select.selected.name"></span>
+    </ui-select-match>
+    <ui-select-choices repeat="item in ($ctrl.itemArray | filter: $select.search) track by item.id">
+        <span ng-bind="item.name"></span>
+    </ui-select-choices>
+</ui-select>
+<br>
+
+ <div id="grid1" ui-grid="{ data: $ctrl.myData }" class="grid"></div>
+
+ <script>
+     $( document ).ready(function(){
+        //ATENCAO nao fazer assim, criar uma diretiva para encapsular isso
+        var words = [
+        {text: "Lorem", weight: 13},
+        {text: "Ipsum", weight: 10.5},
+        {text: "Dolor", weight: 9.4},
+        {text: "Sit", weight: 8},
+        {text: "Amet", weight: 6.2},
+        {text: "Consectetur", weight: 5},
+        {text: "Adipiscing", weight: 5}];
+        $('#nuvemPalavras').jQCloud(words,
+         {
+            width: 300,
+            height: 200
+        });
+     });
+
+ </script>
