@@ -8,8 +8,8 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('profile', {
-        url: '/profile',
+      .state('profile-example', {
+        url: '/profile-example',
         template: '<tt-example  user="$ctrl.user"></tt-example>',        
         controller: ['resolveUser', function (resolveUser) {
           this.user = resolveUser;
