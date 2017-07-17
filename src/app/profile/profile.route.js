@@ -10,7 +10,7 @@
     $stateProvider
       .state('profile', {
         url: '/profile',
-        template: '<tt-profile-edit  user="$ctrl.user"></tt-profile-edit>',        
+        template: '<tt-example  user="$ctrl.user"></tt-example>',        
         controller: ['resolveUser', function (resolveUser) {
           this.user = resolveUser;
         }],

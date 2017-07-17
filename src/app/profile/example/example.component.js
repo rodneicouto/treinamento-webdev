@@ -3,8 +3,8 @@
 
 	angular
 		.module('profile')
-		.component('ttProfileEdit', {
-			templateUrl: 'app/profile/edit/edit.component.html',
+		.component('ttExample', {
+			templateUrl: 'app/profile/example/example.component.html',
 			controller: controller,
 			controllerAs: '$ctrl',
 			bindings: {
