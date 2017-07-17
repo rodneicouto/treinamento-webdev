@@ -13,6 +13,7 @@
             if( !title) throw 'Experience constructor: title is required';
             this._skills = [];
             this._id = ModelHelper.guid();
+            this._skillChangeObservers = []; 
         }
         /**
          * Retorna o identificador desse usuário. 
@@ -68,6 +69,7 @@
         Experience.prototype.addSkill = function(skillUser){ 
             if (!(skillUser instanceof SkillUser)) throw "Experience.addSkill: Illegal Argument exception"
             this.removeSkill(skillUser)
+            this.fire(skillUser);
             return this._skills.push(skillUser); 
         }
 
@@ -82,6 +84,7 @@
          */
         Experience.prototype.removeSkill = function(skill){
             if (!(skill instanceof SkillUser) || !(skill instanceof SkillUser)) throw "Experience.removeSkill: Illegal Argument exception"
+            this.fire(skill);
             ModelHelper.removeItemById(skill, this._skills);
         }
 
@@ -116,6 +119,27 @@
             if(data.endDate) experience.setEndDate(data.endDate);     
             return experience;        
         };
+
+        Experience.prototype.subscribe = function(fn) {
+            this._skillChangeObservers.push(fn);
+        },
+    
+        Experience.prototype.unsubscribe = function(fn) {
+            this._skillChangeObservers = this.handlers.filter(
+                function(item) {
+                    if (item !== fn) {
+                        return item;
+                    }
+                }
+            );
+        },
+    
+        Experience.prototype.fire = function(o) {
+            var scope = this;
+            this._skillChangeObservers.forEach(function(item) {
+                item.call(scope, o);
+            });
+        }
 
         return Experience;
          

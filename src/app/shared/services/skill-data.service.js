@@ -19,8 +19,8 @@
         * Lista de usuários que possuem determinada habilidade
         *
         * @param {Array<string>} key chaves para busca de competencias. a busca vai procurar pelos usuarios que 
-        * possuem uma palava OU outra.
-        * @return {Array<User>}
+        * possuem uma palava parcial OU outra palavra parcial. Ele usa like "%palava%"
+        * @return {Array<SearchUser>}
         */
        function users(keys){
         

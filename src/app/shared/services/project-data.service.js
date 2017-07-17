@@ -15,7 +15,7 @@
        /**
         * Lista de projetos que possuem no nome determinado valor
         *
-        * @param {string} name substring do projeto
+        * @param {string} name substring do projeto. Eh feita uma busca usando like '%nome%'. 
         * @return {Array<Project>} array de projetos, ou vazio caso o nome seja inválido
         */
        function search(name){

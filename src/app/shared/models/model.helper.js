@@ -22,9 +22,12 @@
             if( !array || !item ) return;            
             for (var i = 0; i < array.length; i++) {
                 if( item.getId() ==  array[i].getId() ) {
+                    var removed = array[i].getId();
                     array.splice(i, 1);
+                    return removed;
                 }                
-            }    
+            }
+            return null;    
         }
 
         /**

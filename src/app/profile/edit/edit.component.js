@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('core')
+		.module('profile')
 		.component('ttProfileEdit', {
 			templateUrl: 'app/profile/edit/edit.component.html',
 			controller: controller,
