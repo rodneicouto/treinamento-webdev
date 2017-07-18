@@ -11,9 +11,10 @@
         //construtor
         function Experience(title) {
             if( !title) throw 'Experience constructor: title is required';
+            this._title = title;
             this._skills = [];
             this._id = ModelHelper.guid();
-            this._skillChangeObservers = []; 
+            this._skillChangeObservers = [];             
         }
         /**
          * Retorna o identificador desse usuário. 
@@ -123,7 +124,7 @@
         Experience.prototype.subscribe = function(fn) {
             this._skillChangeObservers.push(fn);
         },
-    
+                             
         Experience.prototype.unsubscribe = function(fn) {
             this._skillChangeObservers = this.handlers.filter(
                 function(item) {
