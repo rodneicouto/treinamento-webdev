@@ -126,7 +126,7 @@
         },
                              
         Experience.prototype.unsubscribe = function(fn) {
-            this._skillChangeObservers = this.handlers.filter(
+            this._skillChangeObservers = this._skillChangeObservers.filter(
                 function(item) {
                     if (item !== fn) {
                         return item;
