@@ -24,16 +24,16 @@
 
 
         Skill.prototype.getValidated = function(){ return this._validated; }
-        Skill.prototype.setValidated = function(validated){ return this._validated = validated; }
+        Skill.prototype.setValidated = function(validated){ this._validated = validated; }
 
         Skill.prototype.getName = function(){ return this._name; }
         Skill.prototype.setName = function(name){ 
             if( !name) throw 'Skill.setName: illegal argument exception';
-            return this._name = name; 
+            this._name = name; 
         }
 
         Skill.prototype.getDescription = function(){ return this._description; }
-        Skill.prototype.setDescription = function(description){ return this._description = description; }
+        Skill.prototype.setDescription = function(description){ this._description = description; }
 
         /**
          * Constrói um objeto skill com o dado vindo do servidor. 

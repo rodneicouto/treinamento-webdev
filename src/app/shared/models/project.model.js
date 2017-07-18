@@ -24,7 +24,10 @@
         }
 
         Project.prototype.getName = function(){ return this._name; }
-        Project.prototype.setName = function(name){ return this._name = name; }
+        Project.prototype.setName = function(name){ this._name = name; }
+
+        Project.prototype.getDescription = function(){ return this._description; }
+        Project.prototype.setDescription = function(value){ this._description = value; }
 
         Project.prototype.getSkills = function(){ return this._skills };
         
@@ -42,6 +45,7 @@
         Project.buildFromServer = function (data) {
             var project = new Project(data.name);
             project._id = data.id;     
+            if( data.description) project.setDescription(data.description);
             return project;
         };
 

@@ -27,7 +27,7 @@
         Experience.prototype.getProject = function(){ return this._project; }
         Experience.prototype.setProject = function(project){ 
             if (!(project instanceof Project)) throw "Experience.setProject: Illegal Argument exception"
-            return this._project = project; 
+            this._project = project; 
         }
 
         Experience.prototype.getDescription = function(){ return this._description; }
@@ -36,19 +36,19 @@
         Experience.prototype.getTitle = function(){ return this._title; }
         Experience.prototype.setTitle = function(title){ 
             if( !title) throw 'Experience.setTitle: illegal argument exception';
-            return this._title = title; 
+            this._title = title; 
         }
 
         Experience.prototype.getStartDate = function(){ return this._startDate; }
         Experience.prototype.setStartDate = function(startDate){ 
             if( !Experience.testDate(startDate) ) throw "Experience.setStartDate: Invalid date format. See 'Experience.testDate' method for explanation"
-            return this._startDate = startDate; 
+            this._startDate = startDate; 
         }
 
         Experience.prototype.getEndDate = function(){ return this._endDate;}
         Experience.prototype.setEndDate = function(endDate){ 
             if( !Experience.testDate(endDate) ) throw "Experience.setEndDate: Invalid date format. See 'Experience.testDate' method for explanation"
-            return this._endDate = endDate; 
+            this._endDate = endDate; 
         }
 
         /**
@@ -69,9 +69,10 @@
          */
         Experience.prototype.addSkill = function(skillUser){ 
             if (!(skillUser instanceof SkillUser)) throw "Experience.addSkill: Illegal Argument exception"
-            this.removeSkill(skillUser)
+            this.removeSkill(skillUser);            
+            var ret  = this._skills.push(skillUser); 
             this.fire(skillUser);
-            return this._skills.push(skillUser); 
+            return ret;
         }
 
         /**
@@ -86,7 +87,7 @@
         Experience.prototype.removeSkill = function(skill){
             if (!(skill instanceof SkillUser) || !(skill instanceof SkillUser)) throw "Experience.removeSkill: Illegal Argument exception"
             this.fire(skill);
-            ModelHelper.removeItemById(skill, this._skills);
+            return ModelHelper.removeItemById(skill, this._skills);
         }
 
         /**

@@ -31,20 +31,20 @@
         User.prototype.getEmail = function(){ return this._email; }
         User.prototype.setEmail = function(email){ 
             if( !email) throw 'User.setEmail: illegal argument exception';
-            return this._email = email; 
+            this._email = email; 
         }
 
         User.prototype.getName = function(){ return this._name; }
         User.prototype.setName = function(name){ 
             if( !name) throw 'User.setName: illegal argument exception';
-            return this._name = name; 
+            this._name = name; 
         }
 
         User.prototype.getLattes = function(){ return this._lattes; }
-        User.prototype.setLattes = function(value){ return this._lattes = value; }
+        User.prototype.setLattes = function(value){ this._lattes = value; }
 
         User.prototype.getLinkedIn = function(){ return this._linkedIn;}
-        User.prototype.setLinkedIn = function(linkedIn){ return this._linkedIn = linkedIn; }
+        User.prototype.setLinkedIn = function(linkedIn){ this._linkedIn = linkedIn; }
 
         
         /**
