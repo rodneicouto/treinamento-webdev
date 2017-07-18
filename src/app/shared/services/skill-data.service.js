@@ -113,6 +113,7 @@
         * @param {Skill} skill 
         */
        function create(skill){
+            if (!skill || !(skill instanceof Skill) ) throw "Skill.create: Illegal Argument exception"
             $log.info("create skill");
             if( !skill ) throw "skill is required"
             var updates = {};    
@@ -130,6 +131,7 @@
         * @param {Skill} skill 
         */
        function remove(skill){
+           if (!skill || !(skill instanceof Skill) ) throw "Skill.create: Illegal Argument exception"
             $log.info("remove skill");
        }
 

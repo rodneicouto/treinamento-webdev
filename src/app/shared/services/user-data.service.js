@@ -156,6 +156,7 @@
          * @param {User} user Usuário para ser criado no firebase
          */
         function create(user) {
+            if (!user ||  !(user instanceof User) ) throw "User.update: Illegal Argument exception"
             $log.info("creating user");
             return _save(user);
         }
@@ -166,6 +167,7 @@
          * @param {User} user Usuário para ser atualizado no firebase
          */
         function update(user) {
+            if (!user || !(user instanceof User) ) throw "User.update: Illegal Argument exception"
             $log.info("updating user");
             return _save(user);
         }
