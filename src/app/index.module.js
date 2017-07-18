@@ -11,6 +11,7 @@
         'ui.bootstrap', 
         'toastr',
         'ui.grid',
+        'ui.grid.resizeColumns',
         'core',
         'search',
         'skill',
