@@ -13,7 +13,9 @@
             create:create,
             remove:remove,
             join: join,
-            search: search
+            search: search,
+            update: update,
+            list: list
        }
        /**
         * Lista de usuários que possuem determinada habilidade
@@ -105,6 +107,46 @@
                 }
                 return ret;
             });
+       }
+
+        /**
+         * Obtem todos os skills
+         * @return {Array<Skill>}  
+         */
+       function list(){
+            if( !name ){
+                var deferred = $q.defer();
+                deferred.resolve([]);
+                return deferred.promise;
+            }
+            return firebaseService.database().ref('/skills').once('value').then(function(snapshot){
+                var ret = [];
+                var data = snapshot.val();
+                if( !data ) return [];
+                for (var skillId in data) {
+                    data[skillId].id = skillId;
+                    ret.push(Skill.buildFromServer(data[skillId]));
+                }
+                return ret;
+            });
+       }
+
+        /**
+        * Cria uma habilidade nova
+        *
+        * @param {Skill} skill 
+        */
+       function update(skill){
+            if (!skill || !(skill instanceof Skill) ) throw "Skill.create: Illegal Argument exception"
+            $log.info("create skill");
+            if( !skill ) throw "skill is required"
+            var updates = {};    
+            updates['skills/' + skill.getId()]  = {
+                name: skill.getName(),
+                validated : skill.getValidated(),
+                description: skill.getDescription()
+            }
+            return firebaseService.database().ref().update(updates);
        }
 
        /**
