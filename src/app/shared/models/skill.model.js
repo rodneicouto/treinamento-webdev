@@ -6,12 +6,12 @@
         .factory('Skill', factory)
 
 	/** @ngInject */
-    function factory() {
+    function factory(ModelHelper) {
         //construtor
         function Skill(name) {
             if( !name ) throw "Skill contructor: name is required"; 
             this.setName(name);
-            this._id = name.split(" ").join("").split(".").join(",");
+            this._id = ModelHelper.guid();
             this.setValidated(false);
         }
          /**

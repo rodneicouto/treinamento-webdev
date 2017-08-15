@@ -114,11 +114,6 @@
          * @return {Array<Skill>}  
          */
        function list(){
-            if( !name ){
-                var deferred = $q.defer();
-                deferred.resolve([]);
-                return deferred.promise;
-            }
             return firebaseService.database().ref('/skills').once('value').then(function(snapshot){
                 var ret = [];
                 var data = snapshot.val();

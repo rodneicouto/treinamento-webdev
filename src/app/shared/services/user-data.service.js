@@ -31,6 +31,7 @@
             firebaseService.database().ref('/users/' + userId).once('value')
                 .then(function (snapshot) {
                     var data = snapshot.val();
+                    if( data == null ) deferred.reject();
                     data.email = email;
                     var user = User.buildFromServer(data);
 
@@ -208,7 +209,7 @@
                 experiences: {}         
             };
             toSend.user.name = user.getName();
-            if (user.getLinkedIn()) toSend.userlinkedIn = user.getLinkedIn();
+            if (user.getLinkedIn()) toSend.user.linkedIn = user.getLinkedIn();
             if (user.getLattes())  toSend.user.lattes = user.getLattes();
 
             var skills = user.getSkills();

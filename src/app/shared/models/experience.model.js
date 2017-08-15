@@ -26,7 +26,7 @@
 
         Experience.prototype.getProject = function(){ return this._project; }
         Experience.prototype.setProject = function(project){ 
-            if (!(project instanceof Project)) throw "Experience.setProject: Illegal Argument exception"
+            if (project != null && !(project instanceof Project)) throw "Experience.setProject: Illegal Argument exception"
             this._project = project; 
         }
 
@@ -41,13 +41,13 @@
 
         Experience.prototype.getStartDate = function(){ return this._startDate; }
         Experience.prototype.setStartDate = function(startDate){ 
-            if( !Experience.testDate(startDate) ) throw "Experience.setStartDate: Invalid date format. See 'Experience.testDate' method for explanation"
+            if( startDate != null && !Experience.testDate(startDate) ) throw "Experience.setStartDate: Invalid date format. See 'Experience.testDate' method for explanation"
             this._startDate = startDate; 
         }
 
         Experience.prototype.getEndDate = function(){ return this._endDate;}
         Experience.prototype.setEndDate = function(endDate){ 
-            if( !Experience.testDate(endDate) ) throw "Experience.setEndDate: Invalid date format. See 'Experience.testDate' method for explanation"
+            if( endDate != null && !Experience.testDate(endDate) ) throw "Experience.setEndDate: Invalid date format. See 'Experience.testDate' method for explanation"
             this._endDate = endDate; 
         }
 
